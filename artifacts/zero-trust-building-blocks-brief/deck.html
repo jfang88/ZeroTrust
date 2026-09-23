@@ -6,66 +6,92 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap">
 <style>
 body{margin:0;background:#2a2e35;font-family:Inter,Arial,sans-serif}
-.frame{width:1920px;margin:40px auto;position:relative}
+.frame{width:1920px;margin:40px auto}
 .frame>section{width:1920px;height:1080px;box-sizing:border-box;position:relative;overflow:hidden}
 section *{margin:0;box-sizing:border-box}
 section ul{padding-left:1.2em}
 section table{border-collapse:collapse;width:100%}
-section th,section td{text-align:left;padding:12px 16px}
+section th,section td{text-align:left;vertical-align:top;padding:10px 14px;border:1px solid #D5D9DE}
 x-shape{display:block}
 x-shape[kind=arrow-right]{clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%)}
 x-shape[kind=arrow-down]{clip-path:polygon(30% 0,70% 0,70% 60%,100% 60%,50% 100%,0 60%,30% 60%)}
-aside.notes{position:static;color:#d8dde3;font-size:18px;line-height:1.5;padding:16px 0}
-section aside.notes{display:none}
+.notes{color:#d8dde3;font-size:18px;line-height:1.5;padding:16px 0;margin:0}
 </style></head><body>
+<div class="frame"><section id="why-now" data-transition="fade" style="background:#F6F5F1; color:#1C2128; font-family:Inter, Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:28px">
+  <h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:52px; font-weight:600; line-height:1.1; color:#0B2545">Why now: attackers log in rather than break in, and a trusted internal network lets them spread</h2>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:24px">
+    <div style="display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#0B2545">Stolen credentials and phishing</h3>
+      <p style="font-size:24px; line-height:1.35">Passwords and push-based MFA can be phished or fatigued; one compromised account can open the whole network</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#0B2545">Lateral movement and ransomware</h3>
+      <p style="font-size:24px; line-height:1.35">Once inside the VPN or office LAN, an attacker reaches far more systems than the user ever needed</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#0B2545">Work has left the perimeter</h3>
+      <p style="font-size:24px; line-height:1.35">SaaS, cloud workloads, remote staff and suppliers now sit outside the firewall we were built to defend</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#0B2545">Regulators and insurers ask for evidence</h3>
+      <p style="font-size:24px; line-height:1.35">Expect questions on phishing-resistant MFA, segmentation, privileged access and access reviews</p>
+    </div>
+  </div>
+  <div style="display:flex; gap:24px; align-items:center; background:#0B2545; padding:22px 28px; border-radius:12px">
+    <p style="font-size:26px; font-weight:700; color:#F6F5F1; white-space:nowrap">Our exposure</p>
+    <p style="font-size:24px; line-height:1.35; color:#F6F5F1">[Recent incidents or near misses] · [open audit findings] · [cyber insurance conditions] · [cost of one day of outage]</p>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; width:1500px; font-size:24px; color:#5A6472">Drivers are generic; replace the bracketed items with our own evidence before presenting</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">1</p>
+</section>
+<p class="notes"><b>Speaker notes:</b> Boards fund risk reduction, not architecture, so start here. The four drivers are generic but widely accepted: identity is now the main attack path; flat trusted networks turn one compromised login into a company-wide incident; much of our estate is no longer behind the firewall; and regulators, auditors and insurers are asking for the controls zero trust delivers. Before presenting, fill the bottom band with our own evidence: incidents or near misses, open audit findings, insurance renewal conditions, and a rough cost of a day of outage for a critical service. Do not quote industry statistics unless they are sourced.</p></div>
 <div class="frame"><section id="building-blocks" data-transition="fade" style="background:#F6F5F1; color:#1C2128; font-family:Inter, Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:28px">
   <h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:52px; font-weight:600; line-height:1.1; color:#0B2545">Zero trust replaces network location with a per-request access decision, built across five pillars</h2>
-  <div style="display:grid; grid-template-columns:440px 88px 440px 88px 608px; align-items:stretch">
-    <div style="display:flex; flex-direction:column; gap:6px; background:#E3EDEE; padding:20px 24px; border-radius:12px">
-      <h3 style="font-size:26px; font-weight:700; color:#0B2545">Signals</h3>
-      <p style="font-size:24px; line-height:1.3">Identity and MFA strength, device posture, threat intel, activity logs, data labels</p>
+  <div style="display:flex; gap:40px; align-items:stretch">
+    <div style="display:flex; gap:0px">
+      <div style="width:330px; display:flex; flex-direction:column; gap:48px">
+        <div style="height:210px; display:flex; flex-direction:column; gap:6px; padding:20px 24px; border-radius:12px; background:#E3EDEE">
+          <h3 style="font-size:26px; font-weight:700; line-height:1.2; color:#0B2545">Signals</h3>
+          <p style="font-size:24px; line-height:1.3">Identity, device health, threat intel, data labels</p>
+        </div>
+        <div style="height:210px; display:flex; flex-direction:column; gap:6px; padding:20px 24px; border-radius:12px; background:#FBFAF7; border:1px solid #D5D9DE">
+          <h3 style="font-size:26px; font-weight:700; line-height:1.2; color:#0B2545">Subject</h3>
+          <p style="font-size:24px; line-height:1.3">Users, devices, services and workloads</p>
+        </div>
+      </div>
+      <div style="width:64px; display:flex; flex-direction:column; gap:48px">
+        <div style="height:210px; display:flex; align-items:center; justify-content:center"><x-shape kind="arrow-right" style="background:#5A6472; width:44px; height:24px"></x-shape></div>
+        <div style="height:210px; display:flex; align-items:center; justify-content:center"><x-shape kind="arrow-right" style="background:#5A6472; width:44px; height:24px"></x-shape></div>
+      </div>
+      <div style="width:330px; display:flex; flex-direction:column">
+        <div style="height:210px; display:flex; flex-direction:column; gap:6px; padding:20px 24px; border-radius:12px; background:#0B2545">
+          <h3 style="font-size:26px; font-weight:700; line-height:1.2; color:#F6F5F1">Policy decision point</h3>
+          <p style="font-size:24px; line-height:1.3; color:#F6F5F1">Decides each request against policy</p>
+        </div>
+        <div style="height:48px; display:flex; align-items:center; justify-content:center"><x-shape kind="arrow-down" style="background:#5A6472; width:24px; height:40px"></x-shape></div>
+        <div style="height:210px; display:flex; flex-direction:column; gap:6px; padding:20px 24px; border-radius:12px; background:#0E6E73">
+          <h3 style="font-size:26px; font-weight:700; line-height:1.2; color:#FFFFFF">Policy enforcement point</h3>
+          <p style="font-size:24px; line-height:1.3; color:#FFFFFF">ZTNA or proxy, API gateway, service mesh, agent</p>
+        </div>
+      </div>
+      <div style="width:64px; display:flex; flex-direction:column; justify-content:end">
+        <div style="height:210px; display:flex; align-items:center; justify-content:center"><x-shape kind="arrow-right" style="background:#5A6472; width:44px; height:24px"></x-shape></div>
+      </div>
+      <div style="width:330px; display:flex; flex-direction:column; justify-content:end">
+        <div style="height:210px; display:flex; flex-direction:column; gap:6px; padding:20px 24px; border-radius:12px; background:#FBFAF7; border:1px solid #D5D9DE">
+          <h3 style="font-size:26px; font-weight:700; line-height:1.2; color:#0B2545">Enterprise resources</h3>
+          <p style="font-size:24px; line-height:1.3">Apps, APIs, data and workloads, never directly reachable</p>
+        </div>
+      </div>
     </div>
-    <div style="display:flex; align-items:center; justify-content:center">
-      <x-shape kind="arrow-right" style="background:#5A6472; width:56px; height:28px"></x-shape>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:6px; background:#0B2545; color:#F6F5F1; padding:20px 24px; border-radius:12px">
-      <h3 style="font-size:26px; font-weight:700; color:#F6F5F1">Policy decision point</h3>
-      <p style="font-size:24px; line-height:1.3; color:#F6F5F1">Policy engine decides each request; administrator opens or closes the session</p>
-    </div>
-    <div></div>
-    <div style="display:flex; flex-direction:column; gap:6px; background:#FBFAF7; border:1px solid #D5D9DE; padding:20px 24px; border-radius:12px">
-      <h3 style="font-size:26px; font-weight:700; color:#0B2545">Operating principles</h3>
-      <ul style="font-size:24px; line-height:1.3">
+    <div style="flex:1; display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px">
+      <h3 style="font-size:28px; font-weight:700; color:#0B2545">Operating principles</h3>
+      <ul style="font-size:24px; line-height:1.35">
         <li>Network location grants no trust</li>
         <li>Least privilege, granted per session</li>
         <li>Verify continuously, not once at login</li>
         <li>Assume breach; limit blast radius</li>
       </ul>
-    </div>
-    <div></div>
-    <div></div>
-    <div style="display:flex; align-items:center; justify-content:center; height:40px">
-      <x-shape kind="arrow-down" style="background:#5A6472; width:28px; height:40px"></x-shape>
-    </div>
-    <div></div>
-    <div></div>
-    <div style="display:flex; flex-direction:column; gap:6px; background:#FBFAF7; border:1px solid #D5D9DE; padding:20px 24px; border-radius:12px">
-      <h3 style="font-size:26px; font-weight:700; color:#0B2545">Subject</h3>
-      <p style="font-size:24px; line-height:1.3">Users, devices, service accounts and workloads asking for access</p>
-    </div>
-    <div style="display:flex; align-items:center; justify-content:center">
-      <x-shape kind="arrow-right" style="background:#5A6472; width:56px; height:28px"></x-shape>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:6px; background:#0E6E73; color:#FFFFFF; padding:20px 24px; border-radius:12px">
-      <h3 style="font-size:26px; font-weight:700; color:#FFFFFF">Policy enforcement point</h3>
-      <p style="font-size:24px; line-height:1.3; color:#FFFFFF">ZTNA or identity-aware proxy, API gateway, service mesh, host agent</p>
-    </div>
-    <div style="display:flex; align-items:center; justify-content:center">
-      <x-shape kind="arrow-right" style="background:#5A6472; width:56px; height:28px"></x-shape>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:6px; background:#FBFAF7; border:1px solid #D5D9DE; padding:20px 24px; border-radius:12px">
-      <h3 style="font-size:26px; font-weight:700; color:#0B2545">Enterprise resources</h3>
-      <p style="font-size:24px; line-height:1.3">Apps, APIs, data stores and cloud workloads, never directly reachable</p>
     </div>
   </div>
   <div style="display:flex; flex-direction:column; gap:10px">
@@ -76,76 +102,106 @@ section aside.notes{display:none}
       <p style="flex:1; font-size:24px; font-weight:700; text-align:center; background:#DCE4EC; color:#0B2545; padding:14px 12px; border-radius:8px">Apps &amp; workloads</p>
       <p style="flex:1; font-size:24px; font-weight:700; text-align:center; background:#DCE4EC; color:#0B2545; padding:14px 12px; border-radius:8px">Data</p>
     </div>
-    <p style="font-size:24px; text-align:center; background:#0B2545; color:#F6F5F1; padding:14px 12px; border-radius:8px">Cross-cutting: visibility &amp; analytics  ·  automation &amp; orchestration  ·  governance</p>
+    <p style="font-size:24px; text-align:center; background:#0B2545; color:#F6F5F1; padding:14px 12px; border-radius:8px">Cross-cutting: visibility &amp; analytics · automation &amp; orchestration · governance</p>
   </div>
   <p style="position:absolute; left:128px; bottom:64px; width:1500px; font-size:24px; color:#5A6472">Sources: NIST SP 800-207 (logical components); CISA Zero Trust Maturity Model v2.0 (pillars, cross-cutting capabilities)</p>
-  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">1</p>
-  <aside class="notes"><b>Speaker notes:</b> Top half is the NIST SP 800-207 core model. Every request from a subject goes through an enforcement point, which asks the decision point. The decision point weighs signals — identity strength, device health, threat intel, behaviour, data sensitivity — against policy and then opens or closes a session. Being "on the corporate network" earns nothing. Bottom band is the CISA ZTMM v2.0 view: five pillars that each mature at their own pace, held together by visibility, automation and governance. Key message: zero trust is an architecture and operating model, not a product — most of the pieces are things we already buy; the change is making them feed one policy decision.</aside>
+  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">2</p>
 </section>
-</div>
+<p class="notes"><b>Speaker notes:</b> Left is the NIST SP 800-207 core model. Every request from a subject goes through an enforcement point, which asks the decision point. The decision point weighs signals (identity strength, device health, threat intel, behaviour, data sensitivity) against policy and then opens or closes a session. Being "on the corporate network" earns nothing. Bottom band is the CISA ZTMM v2.0 view: five pillars that each mature at their own pace, held together by visibility, automation and governance. Key message: zero trust is an architecture and operating model, not a product. Most of the pieces are things we already buy; the change is making them feed one policy decision. That single decision point is also a new dependency, which is why resilience is designed in from day one (slide 5).</p></div>
 <div class="frame"><section id="baseline" data-transition="fade" style="background:#F6F5F1; color:#1C2128; font-family:Inter, Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:28px">
   <h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:52px; font-weight:600; line-height:1.1; color:#0B2545">Most enterprises already own the parts; the gap is wiring them into one policy decision</h2>
   <table style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#1C2128; background:#FBFAF7">
     <tr style="background:#0B2545">
-      <th style="width:20%; color:#F6F5F1">Building block</th>
-      <th style="width:34%; color:#F6F5F1">What we probably have</th>
-      <th style="width:36%; color:#F6F5F1">What zero trust adds</th>
-      <th style="width:10%; color:#F6F5F1">Status</th>
+      <th style="width:21%; color:#F6F5F1">Building block</th>
+      <th style="width:31%; color:#F6F5F1">What we probably have</th>
+      <th style="width:33%; color:#F6F5F1">What zero trust adds</th>
+      <th style="width:15%; color:#F6F5F1">Likely stage</th>
     </tr>
-    <tr style="background:#FBFAF7">
-      <td>Identity</td>
-      <td>SSO, MFA for most users</td>
-      <td>Phishing-resistant MFA, PAM, JIT</td>
-      <td style="color:#8A5A00">Partial</td>
-    </tr>
-    <tr style="background:#EFEEE8">
-      <td>Devices</td>
-      <td>MDM and EDR on corporate endpoints</td>
-      <td>Posture checked at every access</td>
-      <td style="color:#8A5A00">Partial</td>
-    </tr>
-    <tr style="background:#FBFAF7">
-      <td>Networks</td>
-      <td>Perimeter firewall, VPN, flat LAN</td>
-      <td>ZTNA instead of VPN; micro-segments</td>
-      <td style="color:#B42318">Gap</td>
-    </tr>
-    <tr style="background:#EFEEE8">
-      <td>Apps &amp; workloads</td>
-      <td>WAF, CI/CD scans, cloud guardrails</td>
-      <td>Per-request authZ; service identity</td>
-      <td style="color:#8A5A00">Partial</td>
-    </tr>
-    <tr style="background:#FBFAF7">
-      <td>Data</td>
-      <td>Email DLP, partial data labels</td>
-      <td>Data inventory; labels drive access</td>
-      <td style="color:#B42318">Gap</td>
-    </tr>
-    <tr style="background:#EFEEE8">
-      <td>Visibility &amp; analytics</td>
-      <td>SIEM, central logs, SOC</td>
-      <td>Risk signals fed to policy engine</td>
-      <td style="color:#8A5A00">Partial</td>
-    </tr>
-    <tr style="background:#FBFAF7">
-      <td>Automation &amp; governance</td>
-      <td>Policies, annual access reviews</td>
-      <td>Policy-as-code, auto-response, owner</td>
-      <td style="color:#B42318">Gap</td>
-    </tr>
+    <tr style="background:#FBFAF7"><td>Identity</td><td>SSO, MFA for most users</td><td>Phishing-resistant MFA, PAM, JIT</td><td style="color:#8A5A00">Initial</td></tr>
+    <tr style="background:#EFEEE8"><td>Devices</td><td>MDM and EDR on corporate endpoints</td><td>Posture checked at every access</td><td style="color:#8A5A00">Initial</td></tr>
+    <tr style="background:#FBFAF7"><td>Networks</td><td>Perimeter firewall, VPN, flat LAN</td><td>ZTNA instead of VPN; micro-segments</td><td style="color:#B42318">Traditional</td></tr>
+    <tr style="background:#EFEEE8"><td>Apps &amp; workloads</td><td>SaaS behind SSO, WAF, cloud guardrails</td><td>Per-request authZ; SaaS session controls</td><td style="color:#8A5A00">Initial</td></tr>
+    <tr style="background:#FBFAF7"><td>Data</td><td>Email DLP, partial data labels</td><td>Data inventory; labels drive access</td><td style="color:#B42318">Traditional</td></tr>
+    <tr style="background:#EFEEE8"><td>Non-human &amp; supplier access</td><td>Shared service accounts; supplier VPN</td><td>Workload identity; brokered, time-bound access</td><td style="color:#B42318">Traditional</td></tr>
+    <tr style="background:#FBFAF7"><td>Visibility &amp; analytics</td><td>SIEM, central logs, SOC</td><td>Risk signals fed to policy engine</td><td style="color:#8A5A00">Initial</td></tr>
+    <tr style="background:#EFEEE8"><td>Automation &amp; governance</td><td>Policies, annual access reviews</td><td>Policy-as-code, auto-response, owner</td><td style="color:#B42318">Traditional</td></tr>
   </table>
-  <div style="display:flex; gap:24px; align-items:center; background:#0E6E73; padding:20px 28px; border-radius:12px">
-    <p style="font-size:26px; font-weight:700; color:#FFFFFF; white-space:nowrap">Ask today</p>
-    <p style="font-size:24px; line-height:1.3; color:#FFFFFF">Sponsor a 6–8 week discovery to replace this indicative view with our real baseline, then pick two or three pilots</p>
+  <div style="display:flex; gap:24px; align-items:center; background:#E3EDEE; padding:20px 28px; border-radius:12px">
+    <p style="font-size:26px; font-weight:700; color:#0B2545; white-space:nowrap">A hypothesis</p>
+    <p style="font-size:24px; line-height:1.35; color:#1C2128">Stages use the CISA scale (Traditional → Initial → Advanced → Optimal); discovery replaces them with evidence-based scores</p>
   </div>
   <p style="position:absolute; left:128px; bottom:64px; width:1500px; font-size:24px; color:#5A6472">Indicative baseline for a typical enterprise, to be validated. Sources: CISA ZTMM v2.0; NSA Zero Trust Implementation Guidelines (2026)</p>
-  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">2</p>
-  <aside class="notes"><b>Speaker notes:</b> This is a hypothesis, not an assessment. It reflects what most enterprises have when they start: good point products, weak integration. Read the middle column as "already paid for" and the right column as "what makes it zero trust". The pattern: identity and devices are partly there; network is usually the biggest structural change (VPN and flat internal networks); data and governance are the least mature. NSA's 2026 guidelines start with a Discovery phase for exactly this reason — you cannot write access policy for data, apps and flows you have not inventoried. The ask is sponsorship for discovery, not a product purchase.</aside>
+  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">3</p>
 </section>
-</div>
-<script>
-// move notes below each slide
-document.querySelectorAll('section aside.notes').forEach(a=>{a.parentElement.parentElement.appendChild(a)});
-</script>
+<p class="notes"><b>Speaker notes:</b> This is a hypothesis, not an assessment. It reflects what most enterprises have when they start: good point products, weak integration. Read the middle column as "already paid for" and the right column as "what makes it zero trust". Stages are on the CISA ZTMM scale so they carry straight into discovery scoring. The pattern: identity and devices are partly there; network is usually the biggest structural change (VPN and flat internal networks); data, non-human and supplier access, and governance are the least mature. We are not asking you to agree these scores, only that they are plausible enough to justify discovery.</p></div>
+<div class="frame"><section id="the-ask" data-transition="fade" style="background:#F6F5F1; color:#1C2128; font-family:Inter, Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:28px">
+  <h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:52px; font-weight:600; line-height:1.1; color:#0B2545">Three decisions today, and one step we can take without waiting</h2>
+  <div style="display:flex; gap:32px; align-items:stretch">
+    <div style="flex:3; display:flex; flex-direction:column; gap:16px">
+      <div style="display:flex; gap:24px; align-items:center; display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px; flex-direction:row">
+        <p style="font-size:64px; font-weight:700; line-height:1; color:#0E6E73; width:56px">1</p>
+        <div style="flex:1; display:flex; flex-direction:column; gap:4px">
+          <h3 style="font-size:28px; font-weight:700; color:#0B2545">Name a sponsor and a programme owner</h3>
+          <p style="font-size:24px; line-height:1.35">An executive sponsor, and one owner accountable across IAM, network, apps and data</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:24px; align-items:center; display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px; flex-direction:row">
+        <p style="font-size:64px; font-weight:700; line-height:1; color:#0E6E73; width:56px">2</p>
+        <div style="flex:1; display:flex; flex-direction:column; gap:4px">
+          <h3 style="font-size:28px; font-weight:700; color:#0B2545">Approve a 6–8 week discovery</h3>
+          <p style="font-size:24px; line-height:1.35">Scoped to crown-jewel data and services, with named contributors; effort [__ person-weeks], budget [__]</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:24px; align-items:center; display:flex; flex-direction:column; gap:8px; background:#FBFAF7; border:1px solid #D5D9DE; padding:24px 28px; border-radius:12px; flex-direction:row">
+        <p style="font-size:64px; font-weight:700; line-height:1; color:#0E6E73; width:56px">3</p>
+        <div style="flex:1; display:flex; flex-direction:column; gap:4px">
+          <h3 style="font-size:28px; font-weight:700; color:#0B2545">Adopt one framework backbone</h3>
+          <p style="font-size:24px; line-height:1.35">NIST SP 800-207 for the model and CISA ZTMM for scoring; regional standards as references</p>
+        </div>
+      </div>
+    </div>
+    <div style="flex:2; display:flex; flex-direction:column; gap:16px; background:#0E6E73; padding:32px 36px; border-radius:12px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#E3EDEE">IN PARALLEL</p>
+      <h3 style="font-size:36px; font-weight:700; line-height:1.2; color:#FFFFFF">Phishing-resistant MFA and just-in-time access for administrators</h3>
+      <p style="font-size:24px; line-height:1.4; color:#FFFFFF">Worth doing whatever discovery finds. Cuts the highest-impact risk now and shows progress before the funding decision in week 15.</p>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; width:1500px; font-size:24px; color:#5A6472">Discovery follows the NSA ZIG Discovery Phase; the funding request for pilots returns to ExCo in week 15</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">4</p>
+</section>
+<p class="notes"><b>Speaker notes:</b> Three decisions, all needed to start. One: a sponsor and a single accountable owner, because zero trust cuts across teams that normally own their own tools. Two: discovery, scoped to crown jewels rather than the whole estate so that 6 to 8 weeks is realistic; fill in the effort and budget before presenting. Three: one framework backbone so we score and report consistently; NSA, NCSC and GB/T 43696 stay as references for activities and regional requirements. In parallel, one no-regret step: phishing-resistant MFA and just-in-time access for administrators. It does not depend on the discovery outcome, and it reduces the risk of the most damaging account takeover.</p></div>
+<div class="frame"><section id="measures" data-transition="fade" style="background:#F6F5F1; color:#1C2128; font-family:Inter, Arial, sans-serif; padding:128px 128px 160px; display:flex; flex-direction:column; gap:28px">
+  <h2 style="font-family:'Source Serif 4', Georgia, serif; font-size:52px; font-weight:600; line-height:1.1; color:#0B2545">How we will know it is working</h2>
+  <div style="display:flex; gap:24px; align-items:stretch">
+    <div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FBFAF7; border:1px solid #D5D9DE; padding:28px 32px; border-radius:12px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#0E6E73">DISCOVERY IS DONE WHEN</p>
+      <ul style="font-size:24px; line-height:1.4">
+        <li>Crown-jewel data, apps and services are inventoried, with who and what can reach them</li>
+        <li>Each pillar is scored on the CISA scale, with evidence behind every score</li>
+        <li>A target design names which system makes the access decision</li>
+        <li>Two or three pilots are chosen, each with success measures</li>
+      </ul>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FBFAF7; border:1px solid #D5D9DE; padding:28px 32px; border-radius:12px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#0E6E73">A PILOT SUCCEEDS WHEN</p>
+      <ul style="font-size:24px; line-height:1.4">
+        <li>[__]% of the pilot group reach the resource only through the new decision point</li>
+        <li>Standing admin rights in scope fall to [__]</li>
+        <li>Sign-in friction and helpdesk tickets stay flat or fall</li>
+        <li>It ships in 90 days with one user group and one resource set</li>
+      </ul>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; gap:14px; background:#FBFAF7; border:1px solid #D5D9DE; padding:28px 32px; border-radius:12px">
+      <p style="font-size:24px; font-weight:700; letter-spacing:2px; color:#0E6E73">DESIGNED IN FROM DAY ONE</p>
+      <ul style="font-size:24px; line-height:1.4">
+        <li>Break-glass access if the identity provider or decision point fails</li>
+        <li>A hardened identity provider, now the most valuable target</li>
+        <li>Privacy and cross-border review of access telemetry (PIPL, UK GDPR, HK PDPO)</li>
+      </ul>
+    </div>
+  </div>
+  <p style="position:absolute; left:128px; bottom:64px; width:1500px; font-size:24px; color:#5A6472">Bracketed targets are set during discovery</p>
+  <p style="position:absolute; right:128px; bottom:64px; width:60px; font-size:24px; color:#5A6472; text-align:right">5</p>
+</section>
+<p class="notes"><b>Speaker notes:</b> These are the tests we will be held to. Discovery has a clear exit: inventory, evidence-based scores, a target design for the decision point, and a pilot shortlist. Pilots are judged on adoption, reduced standing privilege and user experience, and are kept small enough to ship in about 90 days. Two things are built in from the start rather than bolted on. First, zero trust makes the identity provider and policy engine a single point of dependency and a prime target, so we need break-glass access and hardening. Second, the telemetry that feeds access decisions is personal data and may cross borders between mainland China, Hong Kong and the UK, so privacy and legal review shape the architecture, not just the paperwork.</p></div>
 </body></html>

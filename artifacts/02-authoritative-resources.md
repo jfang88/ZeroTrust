@@ -4,16 +4,19 @@
 
 ## How the sources fit together
 
-| Role in the programme | Source |
-|---|---|
-| Definition and logical architecture | NIST SP 800-207 |
-| Cloud-native / multi-cloud access control | NIST SP 800-207A |
-| Worked example implementations | NIST SP 1800-35 |
-| Maturity scoring per pillar | CISA Zero Trust Maturity Model v2.0 |
-| Phased, activity-level implementation | NSA Zero Trust Implementation Guidelines (ZIGs), 2026 |
-| UK design principles | NCSC Zero Trust Architecture collection |
-| Mainland China reference architecture | GB/T 43696-2024 |
-| Hong Kong regulatory context | HKMA supervisory guidance; critical infrastructure ordinance |
+| Role in the programme | Source | Weight |
+|---|---|---|
+| Definition and logical architecture | NIST SP 800-207 | **Backbone** |
+| Maturity scoring per pillar | CISA Zero Trust Maturity Model v2.0 | **Backbone** |
+| Cloud-native / multi-cloud access control | NIST SP 800-207A | Reference |
+| Worked example implementations | NIST SP 1800-35 | Reference |
+| Phased, activity-level implementation | NSA Zero Trust Implementation Guidelines (ZIGs), 2026 | Reference (activity checklist) |
+| UK design principles | NCSC Zero Trust Architecture collection | Regional reference |
+| Mainland China reference architecture | GB/T 43696-2024 | Regional reference |
+| Hong Kong regulatory context | HKMA supervisory guidance; critical infrastructure ordinance | Regional context |
+| Privacy and cross-border data rules that shape telemetry design | PIPL and related PRC data laws; UK GDPR; HK PDPO | Constraint |
+
+The backbone is deliberately two documents: NIST SP 800-207 for the model and vocabulary, CISA ZTMM for scoring. Where sources differ, the backbone decides. The NSA ZIGs are used as an activity checklist rather than a third backbone; they are written for defence and are heavier than most enterprises need.
 
 ## United States
 
@@ -54,9 +57,12 @@ https://www.ncsc.gov.uk/collection/zero-trust-architecture
 ## Mainland China
 
 ### GB/T 43696-2024 — Cybersecurity technology: Zero trust reference architecture (网络安全技术 零信任参考体系架构)
-China's first national standard for zero trust; published 25 April 2024, effective 1 November 2024, under TC260. Use it as the reference for mainland operations, local suppliers and procurement language. Purchase via the national standards service.
+China's first national standard for zero trust; published 25 April 2024, effective 1 November 2024, under TC260. It is a recommended (GB/T) standard, not a legal requirement. Use it as the reference for mainland operations, local suppliers and procurement language. Purchase via the national standards service.
 - Standard record: https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=C166002FE253A840E56BEBF13B4945E7
 - National library entry: https://ndls.org.cn/standard/detail/1addd8501c44f04f9ab7eb255f218595
+
+### Binding obligations that affect a ZT design
+Adopting GB/T 43696 does not by itself meet any legal obligation. The obligations that bite in mainland China come from the Cybersecurity Law, the Multi-Level Protection Scheme (MLPS 2.0, GB/T 22239-2019), the Data Security Law and the Personal Information Protection Law (PIPL). ZT depends on central telemetry about users and devices; sending that data from the mainland to a global SIEM or policy engine may be a cross-border transfer of personal information. Take legal advice before designing where telemetry is processed and stored.
 
 ### Related standards to track
 - 20250865-T-469 — Zero trust capability maturity model and evaluation method (national standard in development; the Chinese counterpart to a maturity model).
@@ -69,6 +75,11 @@ No dedicated Hong Kong zero trust standard was found. ZT is best positioned as t
 - **HKMA Practice Guide on Cloud Adoption (January 2026)** — applies to authorised institutions; expanded from four to eight cloud domains, relevant to hybrid and multi-cloud access control. https://brdr.hkma.gov.hk/eng/doc-ldg/docId/getPdf/20260108-3-EN/20260108-3-EN.pdf
 - **HKMA C-RAF 2.0** — cyber resilience assessment framework for banks (if the organisation or its clients are HKMA-regulated).
 - **Protection of Critical Infrastructures (Computer Systems) Ordinance** — implementation from 2026; relevant if any entity is designated as a critical infrastructure operator.
+- **Personal Data (Privacy) Ordinance (PDPO)** — access telemetry about staff is personal data; relevant to what is collected and where it is sent.
+
+## United Kingdom — privacy
+
+Access telemetry (sign-in behaviour, device data, location) is personal data under UK GDPR and the Data Protection Act 2018. Carry out a data protection impact assessment before pilots that add monitoring. ICO guidance: https://ico.org.uk/for-organisations/
 
 ## Secondary / vendor references
 
@@ -90,4 +101,4 @@ Useful for engineers; not authoritative for the briefing.
 
 ## Maintenance
 
-Re-check links and versions quarterly. Watch for: a CISA ZTMM successor, NSA Phase Three/Four ZIGs, final publication of the Chinese ZT maturity model standard.
+Re-check links and versions quarterly; links and 2026 publication details above were last checked in September 2026 and should be re-verified before external use. Watch for: a CISA ZTMM successor, NSA Phase Three/Four ZIGs, final publication of the Chinese ZT maturity model standard.
