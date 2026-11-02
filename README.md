@@ -6,9 +6,11 @@ Enterprise zero trust briefing plan — materials for briefing an enterprise on 
 
 | File | Purpose |
 |---|---|
-| [01-briefing-plan.md](01-briefing-plan.md) | The plan: objectives, audiences, phases, agenda, decisions to ask for |
-| [02-authoritative-resources.md](02-authoritative-resources.md) | Curated primary sources (US, UK, mainland China, Hong Kong) with links and how to use each |
-| [03-building-blocks-and-baseline.md](03-building-blocks-and-baseline.md) | Text version of the two-page deck: building blocks, typical "have vs. missing" baseline, discovery questions |
+| [01-briefing-plan.md](artifacts/01-briefing-plan.md) | The plan: objectives, audiences, phases, agenda, decisions to ask for |
+| [02-authoritative-resources.md](artifacts/02-authoritative-resources.md) | Curated primary sources (US, UK, mainland China, Hong Kong) with links and how to use each |
+| [03-building-blocks-and-baseline.md](artifacts/03-building-blocks-and-baseline.md) | Text version of the two-page deck: building blocks, typical "have vs. missing" baseline, discovery questions |
+| [zero-trust-building-blocks-brief/](artifacts/zero-trust-building-blocks-brief/) | Exported source of the two-slide deck, with a standalone `deck.html` viewer |
+| [zero-trust-maturity-workbook/](artifacts/zero-trust-maturity-workbook/) | Excel self-assessment against CISA ZTMM v2.0 with a generated, dependency-ordered improvement roadmap and an optional payments appendix; blank and illustrative-example copies, plus the generator |
 
 ## Deck
 
@@ -35,3 +37,4 @@ Keep it to generic, reusable material. The organisation-specific baseline, inven
 | Briefing plan | Draft v0.1 |
 | Resource list | Draft v0.2 (checked September 2026; Microsoft playbook material added with proviso) |
 | Two-page deck | Draft v0.1 |
+| Maturity workbook | Draft v0.1 (October 2026) |
